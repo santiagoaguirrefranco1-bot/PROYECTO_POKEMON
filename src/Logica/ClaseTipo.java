@@ -17,7 +17,7 @@ public enum ClaseTipo {
         
         return atacante == PSIQUICO;
     }
-    
+
     return false;
 
     }
