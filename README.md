@@ -1,3 +1,3 @@
 # PROYECTO_POKEMON
 
-Proyecto realizado por Diego Garzon - Johan Benitez - Santiago Aguirri
+Proyecto realizado por Diego Garzon - Johan Benitez - Santiago Aguirre
