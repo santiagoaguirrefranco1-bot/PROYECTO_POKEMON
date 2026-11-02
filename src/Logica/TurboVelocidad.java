@@ -5,8 +5,11 @@ public class TurboVelocidad extends Objeto {
         super("Turbo Velocidad");
     }
 
-    @Override //me falta alguna variable dentro de pokemon con el valor de costo retirada para restar -1
-    public boolean activar() {
+    @Override
+    public boolean activar(Jugador jugador) {
+        if (jugador.getActivo() == null) return false;
+        jugador.sumarReduccionRetirada(1);
+        System.out.println("El costo de retirada baja en 1 este turno");
         return true;
     }
 }

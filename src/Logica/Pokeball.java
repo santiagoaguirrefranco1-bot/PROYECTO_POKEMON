@@ -5,8 +5,16 @@ public class Pokeball extends Objeto {
         super("Pokeball");
     }
 
-    @Override //necesito alguna variable para ver si el pokemon es basico y ver si esta en el mazo
-    public boolean activar() {
+    @Override
+        public boolean activar(Jugador jugador) {
+        ClasePokemon encontrado = jugador.getMazo().sacarPokemonBasico();
+        if (encontrado == null) {
+        System.out.println("No quedan Pokémon básicos en el mazo.");
+        return false;
+        }
+        jugador.agregarAMano(encontrado);
+        jugador.getMazo().barajar();
+        System.out.println("Encontraste a " + encontrado.getNombre() + " y lo pones en tu mano");
         return true;
     }
 }

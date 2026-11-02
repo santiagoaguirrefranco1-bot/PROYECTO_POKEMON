@@ -7,14 +7,18 @@ public class Misty extends Soporte {
     public Misty() {
         super("Misty");
     }
-    // la logica seria recorrer los pokemon del jugador activo y en banca, se filtra y guarda en la lista aguas
-    // unicamente los tipo agua, guarda sus nombres en una lista y mostrarlos en consola para que a la final el
-    // jugador seleccione 1 y adjuntar hasta 3 de energia agua 
-    // necesito la clase jugador y partida avanzada para poder implementar la logica necesaria
     @Override
-    public boolean activar() {
-        List<ClasePokemon> aguas = new ArrayList<>();
-        List<String> nombres = new ArrayList<>();
-        return true;
+    public boolean activar(Jugador jugador) {
+        for (ClasePokemon p : jugador.getPokemonEnJuego()) {
+            if (p.getTipo() == ClaseTipo.AGUA) {
+            for (int i = 0; i < 3; i++) {
+                p.adjuntarEnergia(ClaseTipo.AGUA);
+                }
+                System.out.println("Misty adjunta 3 energías de Agua a " + p.getNombre());
+                return true;
+            }
+    }
+    System.out.println("No tienes Pokemon de Agua en juego");
+    return false;
     }
 }
