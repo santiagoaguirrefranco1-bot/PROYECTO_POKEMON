@@ -5,7 +5,7 @@ public class Pocion extends Objeto {
         super("Pocion");
     }
 
-    @Override //necesito las variables de vida de los pokemones
+    @Override //necesito las variables de jugador y partida
     public boolean activar () {
     return true;
     }
