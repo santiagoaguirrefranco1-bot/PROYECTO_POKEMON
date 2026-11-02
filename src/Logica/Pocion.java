@@ -5,8 +5,12 @@ public class Pocion extends Objeto {
         super("Pocion");
     }
 
-    @Override //necesito las variables de jugador y partida
-    public boolean activar () {
+    @Override
+    public boolean activar(Jugador jugador) {
+    ClasePokemon activo = jugador.getActivo();
+    if (activo == null) return false;
+    activo.curar(20);
+    System.out.println(activo.getNombre() + " recupera 20 PS");
     return true;
     }
 }

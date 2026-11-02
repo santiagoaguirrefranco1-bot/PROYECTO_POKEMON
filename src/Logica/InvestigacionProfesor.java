@@ -6,7 +6,11 @@ public class InvestigacionProfesor extends Soporte {
     }
 
     @Override
-    public boolean activar() {
+    public boolean activar(Jugador jugador) {
+        jugador.descartarMano();
+        jugador.robar();
+        jugador.robar();
+        System.out.println(jugador.getNombre() + " descarta su mano y roba 2 cartas");
         return true;
     }
 }
