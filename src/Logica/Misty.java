@@ -8,7 +8,7 @@ public class Misty extends Soporte {
         super("Misty");
     }
     @Override
-    public boolean activar(Jugador jugador) {
+    public boolean activar(Jugador jugador, Partida partida) {
         for (ClasePokemon p : jugador.getPokemonEnJuego()) {
             if (p.getTipo() == ClaseTipo.AGUA) {
             for (int i = 0; i < 3; i++) {

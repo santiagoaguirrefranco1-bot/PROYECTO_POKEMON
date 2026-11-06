@@ -6,7 +6,7 @@ public class InvestigacionProfesor extends Soporte {
     }
 
     @Override
-    public boolean activar(Jugador jugador) {
+    public boolean activar(Jugador jugador, Partida partida) {
         jugador.descartarMano();
         jugador.robar();
         jugador.robar();
