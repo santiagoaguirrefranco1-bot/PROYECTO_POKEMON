@@ -1,40 +1,30 @@
-import Logica.*;
+import Logica.Consola;
+import Logica.FabricaCartas;
+import Logica.Jugador;
+import Logica.Mazo;
+import Logica.Partida;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 
 public class App {
     public static void main(String[] args) {
+        System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));
 
-        List<ClaseAtaque> ataques = new ArrayList<>();
-        ataques.add(new ClaseAtaque("Mordisco", 1, ClaseTipo.ELECTRICO, 20));
-        ClasePokemon pikachu = new ClasePokemon("Pikachu", ClaseTipo.ELECTRICO, 60, 1, ataques);
+        Consola consola = new Consola();
+        consola.mostrarBienvenida();
 
-        pikachu.recibirDanio(30);
-        System.out.println("PS despues de 30 de daño: " + pikachu.getPsActual());
-        pikachu.curar(100);
-        System.out.println("PS despues de curar de mas: " + pikachu.getPsActual());
+        String nombre1 = consola.pedirNombre("Entrenador 1");
+        Mazo mazo1 = FabricaCartas.crearMazo(consola.elegirMazo(nombre1, FabricaCartas.nombresMazos()));
+        String nombre2 = consola.pedirNombre("Entrenador 2");
+        Mazo mazo2 = FabricaCartas.crearMazo(consola.elegirMazo(nombre2, FabricaCartas.nombresMazos()));
 
-        System.out.println("Puede atacar sin energia: " + pikachu.puedeAtacar(ataques.get(0)));
-        pikachu.adjuntarEnergia(ClaseTipo.ELECTRICO);
-        System.out.println("Puede atacar con energia: " + pikachu.puedeAtacar(ataques.get(0)));
+        if (!mazo1.esValido() || !mazo2.esValido()) {
+            System.out.println("Alguno de los mazos no es valido.");
+            return;
+        }
 
-        ClasePokemon mewtwo = new ClasePokemonEx("Mewtwo ex", ClaseTipo.PSIQUICO, 150, 2, ataques);
-        System.out.println("Premio Pikachu: " + pikachu.getPuntosPremio());
-        System.out.println("Premio Mewtwo ex: " + mewtwo.getPuntosPremio());
-
-        System.out.println("Agua debil a Fuego: " + ClaseTipo.AGUA.esDebilA(ClaseTipo.FUEGO));
-
-        List<ClaseCarta> cartas = new ArrayList<>();
-        cartas.add(pikachu);
-        cartas.add(new Pocion());
-        Jugador yugi = new Jugador("yugi", new Mazo(cartas));
-        yugi.agregarAMano(pikachu);
-        yugi.colocarActivo(pikachu);
-        pikachu.recibirDanio(40);
-        Jugador rival = new Jugador("rival", new Mazo(new ArrayList<>(cartas)));
-        Partida partida = new Partida(yugi, rival, new Consola());
-        new Pocion().activar(yugi, partida);
-        System.out.println("PS tras Pocion: " + pikachu.getPsActual());
+        Partida partida = new Partida(new Jugador(nombre1, mazo1), new Jugador(nombre2, mazo2), consola);
+        partida.jugar();
     }
 }

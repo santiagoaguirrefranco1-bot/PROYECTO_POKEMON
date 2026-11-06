@@ -27,7 +27,7 @@ public class Jugador {
         this.mazo = mazo;
     }
 
-    //Da 5 cartas y si no hay Pokemon basico hace mulligan, por ultimo devuelve cuántos mulligans hizo
+    //Da 5 cartas y si no hay Pokemon basico hace mulligan, por ultimo devuelve cuantos mulligans hizo
 
     public int repartirManoInicial() {
         int mulligans = 0;

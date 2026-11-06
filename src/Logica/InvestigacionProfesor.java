@@ -2,7 +2,7 @@ package Logica;
 
 public class InvestigacionProfesor extends Soporte {
     public InvestigacionProfesor() {
-        super("Investigación del Profesor");
+        super("Investigacion del Profesor");
     }
 
     @Override

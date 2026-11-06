@@ -27,20 +27,20 @@ public final class FabricaCartas {
             case "Snorlax" -> new ClasePokemon("Snorlax", I, 150, 3,
                     List.of(new ClaseAtaque("Golpe Cuerpo", 3, I, 100)));
             case "Mewtwo ex" -> new ClasePokemonEx("Mewtwo ex", P, 150, 2,
-                    List.of(new ClaseAtaque("Ataque Psíquico", 2, P, 50),
+                    List.of(new ClaseAtaque("Ataque Psiquico", 2, P, 50),
                             new ClaseAtaque("Psicorrayo", 3, P, 150)));
             case "Zapdos ex" -> new ClasePokemonEx("Zapdos ex", E, 130, 1,
                     List.of(new ClaseAtaque("Picotazo", 1, I, 30),
-                            new ClaseAtaque("Tormenta Eléctrica", 3, E, 100)));
+                            new ClaseAtaque("Tormenta Electrica", 3, E, 100)));
             case "Moltres ex" -> new ClasePokemonEx("Moltres ex", F, 130, 2,
                     List.of(new ClaseAtaque("Aleteo", 1, I, 30),
                             new ClaseAtaque("Danza Infernal", 3, F, 70)));
             case "Articuno ex" -> new ClasePokemonEx("Articuno ex", A, 130, 2,
                     List.of(new ClaseAtaque("Viento Helado", 1, A, 30),
                             new ClaseAtaque("Ventisca", 3, A, 100)));
-            case "Investigación del Profesor" -> new InvestigacionProfesor();
-            case "Poción" -> new Pocion();
-            case "Poké Ball" -> new Pokeball();
+            case "Investigacion del Profesor" -> new InvestigacionProfesor();
+            case "Pocion" -> new Pocion();
+            case "Poke Ball" -> new Pokeball();
             case "Turbo Velocidad" -> new TurboVelocidad();
             case "Misty" -> new Misty();
             default -> throw new IllegalArgumentException("Carta desconocida: " + nombre);
@@ -54,7 +54,7 @@ public final class FabricaCartas {
     }
 
     public static String[] nombresMazos() {
-        return new String[] { "Mazo Fuego y Rayo", "Mazo Agua", "Mazo Psíquico" };
+        return new String[] { "Mazo Fuego y Rayo", "Mazo Agua", "Mazo Psiquico" };
     }
 
     public static Mazo crearMazo(int opcion) {
@@ -64,22 +64,22 @@ public final class FabricaCartas {
                 agregar(c, "Charmander", 2); agregar(c, "Moltres ex", 2);
                 agregar(c, "Pikachu", 2);    agregar(c, "Zapdos ex", 2);
                 agregar(c, "Jigglypuff", 2); agregar(c, "Snorlax", 2);
-                agregar(c, "Poción", 2);     agregar(c, "Poké Ball", 2);
-                agregar(c, "Turbo Velocidad", 2); agregar(c, "Investigación del Profesor", 2);
+                agregar(c, "Pocion", 2);     agregar(c, "Poke Ball", 2);
+                agregar(c, "Turbo Velocidad", 2); agregar(c, "Investigacion del Profesor", 2);
             }
             case 2 -> {
                 agregar(c, "Squirtle", 2);   agregar(c, "Magikarp", 2);
                 agregar(c, "Articuno ex", 2); agregar(c, "Snorlax", 2);
                 agregar(c, "Jigglypuff", 2); agregar(c, "Misty", 2);
-                agregar(c, "Poción", 2);     agregar(c, "Poké Ball", 2);
-                agregar(c, "Turbo Velocidad", 2); agregar(c, "Investigación del Profesor", 2);
+                agregar(c, "Pocion", 2);     agregar(c, "Poke Ball", 2);
+                agregar(c, "Turbo Velocidad", 2); agregar(c, "Investigacion del Profesor", 2);
             }
             default -> {
                 agregar(c, "Mewtwo ex", 2);  agregar(c, "Pikachu", 2);
                 agregar(c, "Jigglypuff", 2); agregar(c, "Snorlax", 2);
                 agregar(c, "Zapdos ex", 2);  agregar(c, "Magikarp", 2);
-                agregar(c, "Poción", 2);     agregar(c, "Poké Ball", 2);
-                agregar(c, "Turbo Velocidad", 2); agregar(c, "Investigación del Profesor", 2);
+                agregar(c, "Pocion", 2);     agregar(c, "Poke Ball", 2);
+                agregar(c, "Turbo Velocidad", 2); agregar(c, "Investigacion del Profesor", 2);
             }
         }
         return new Mazo(c);

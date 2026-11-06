@@ -47,16 +47,16 @@ public class Partida {
     private void prepararJugador(Jugador j) {
         int mulligans = j.repartirManoInicial();
         if (mulligans > 0) {
-            vista.mostrarMensaje(j.getNombre() + " hizo " + mulligans + " mulligan(s) por no tener Pokémon básico.");
+            vista.mostrarMensaje(j.getNombre() + " hizo " + mulligans + " mulligan(s) por no tener Pokemon basico.");
         }
         List<ClasePokemon> basicos = pokemonEnMano(j);
-        int i = vista.elegirOpcion(j.getNombre() + ": elige tu Pokémon activo", nombres(basicos), false);
+        int i = vista.elegirOpcion(j.getNombre() + ": elige tu Pokemon activo", nombres(basicos), false);
         j.colocarActivo(basicos.get(i));
 
         while (j.getBanco().size() < 2) {
             basicos = pokemonEnMano(j);
             if (basicos.isEmpty()) break;
-            i = vista.elegirOpcion(j.getNombre() + ": ¿colocas un Pokémon en el banco?", nombres(basicos), true);
+            i = vista.elegirOpcion(j.getNombre() + ": Colocas un Pokemon en el banco?", nombres(basicos), true);
             if (i < 0) break;
             j.colocarEnBanco(basicos.get(i));
         }
@@ -79,14 +79,14 @@ public class Partida {
 
     private void adjuntarEnergia(Jugador j) {
         if (!j.isEnergiaDisponible()) {
-            vista.mostrarMensaje("Ya usaste la energía de este turno.");
+            vista.mostrarMensaje("Ya usaste la energia de este turno.");
             return;
         }
         List<ClasePokemon> destinos = j.getPokemonEnJuego();
-        int i = vista.elegirOpcion("¿A qué Pokémon adjuntas la energía?", nombres(destinos), true);
+        int i = vista.elegirOpcion("A que Pokemon adjuntas la energia?", nombres(destinos), true);
         if (i >= 0) {
             j.adjuntarEnergia(destinos.get(i));
-            vista.mostrarMensaje("Energía " + j.getZonaEnergia().getSimbolo() + " adjuntada a " + destinos.get(i).getNombre() + ".");
+            vista.mostrarMensaje("Energia " + j.getZonaEnergia().getSimbolo() + " adjuntada a " + destinos.get(i).getNombre() + ".");
         }
     }
 
@@ -103,7 +103,7 @@ public class Partida {
         for (CartaEntrenador e : entrenadores) {
             nombres.add(e.getNombre() + (e instanceof Soporte ? " (Soporte)" : " (Objeto)"));
         }
-        int i = vista.elegirOpcion("¿Qué carta de entrenador juegas?", nombres, true);
+        int i = vista.elegirOpcion("Que carta de entrenador juegas?", nombres, true);
         if (i < 0) return;
 
         CartaEntrenador carta = entrenadores.get(i);
@@ -122,28 +122,28 @@ public class Partida {
 
     private void colocarEnBanco(Jugador j) {
         if (j.getBanco().size() >= 2) {
-            vista.mostrarMensaje("Tu banco está lleno.");
+            vista.mostrarMensaje("Tu banco esta lleno.");
             return;
         }
         List<ClasePokemon> basicos = pokemonEnMano(j);
         if (basicos.isEmpty()) {
-            vista.mostrarMensaje("No tienes Pokémon en la mano.");
+            vista.mostrarMensaje("No tienes Pokemon en la mano.");
             return;
         }
-        int i = vista.elegirOpcion("¿Qué Pokémon colocas en el banco?", nombres(basicos), true);
+        int i = vista.elegirOpcion("Qué Pokemon colocas en el banco?", nombres(basicos), true);
         if (i >= 0) j.colocarEnBanco(basicos.get(i));
     }
 
     private void retirar(Jugador j) {
         if (j.getBanco().isEmpty()) {
-            vista.mostrarMensaje("No tienes Pokémon en el banco.");
+            vista.mostrarMensaje("No tienes Pokemon en el banco.");
             return;
         }
         if (!j.puedeRetirar()) {
-            vista.mostrarMensaje("Necesitas " + j.getCostoRetiradaEfectivo() + " energía(s) adjunta(s) para retirar.");
+            vista.mostrarMensaje("Necesitas " + j.getCostoRetiradaEfectivo() + " energia(s) adjunta(s) para retirar.");
             return;
         }
-        int i = vista.elegirOpcion("¿Qué Pokémon pasa a activo? (costo: " + j.getCostoRetiradaEfectivo() + " energía/s)",
+        int i = vista.elegirOpcion("Que Pokemon pasa a activo? (costo: " + j.getCostoRetiradaEfectivo() + " energia/s)",
                 nombres(j.getBanco()), true);
         if (i >= 0) j.retirarActivo(i);
     }
@@ -161,17 +161,17 @@ public class Partida {
 
         ClaseAtaque ataque = atacante.getAtaques().get(i);
         if (!atacante.puedeAtacar(ataque)) {
-            vista.mostrarMensaje("No tienes las energías necesarias para " + ataque.getNombre() + ".");
+            vista.mostrarMensaje("No tienes las energias necesarias para " + ataque.getNombre() + ".");
             return false;
         }
         ClasePokemon defensor = rival.getActivo();
         int danio = ataque.getDanioBase();
         if (defensor.getTipo().esDebilA(atacante.getTipo())) {
             danio += 20;
-            vista.mostrarMensaje("¡Es súper efectivo! +20 de daño.");
+            vista.mostrarMensaje("Es super efectivo! +20 de danio.");
         }
         defensor.recibirDanio(danio);
-        vista.mostrarMensaje(atacante.getNombre() + " usa " + ataque.getNombre() + " y hace " + danio + " de daño a " + defensor.getNombre() + ".");
+        vista.mostrarMensaje(atacante.getNombre() + " usa " + ataque.getNombre() + " y hace " + danio + " de danio a " + defensor.getNombre() + ".");
 
         if (defensor.estaDerrotado()) {
             resolverDerrota(j, rival);
@@ -187,11 +187,11 @@ public class Partida {
         vista.mostrarMensaje(derrotado.getNombre() + " fue derrotado. " + atacante.getNombre() + " gana " + premio + " punto(s) de premio.");
 
         if (atacante.getPuntosPremio() >= PREMIOS_PARA_GANAR) {
-            terminar(atacante, "acumuló " + PREMIOS_PARA_GANAR + " puntos de premio");
+            terminar(atacante, "acumulo " + PREMIOS_PARA_GANAR + " puntos de premio");
         } else if (defensor.getBanco().isEmpty()) {
-            terminar(atacante, "el rival se quedó sin Pokémon en juego");
+            terminar(atacante, "el rival se quedo sin Pokemon en juego");
         } else {
-            int i = vista.elegirOpcion(defensor.getNombre() + ": elige tu nuevo Pokémon activo", nombres(defensor.getBanco()), false);
+            int i = vista.elegirOpcion(defensor.getNombre() + ": elige tu nuevo Pokemon activo", nombres(defensor.getBanco()), false);
             defensor.promoverDesdeBanco(i);
         }
     }

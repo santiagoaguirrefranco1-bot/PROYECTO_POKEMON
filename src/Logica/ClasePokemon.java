@@ -86,4 +86,3 @@ public class ClasePokemon extends ClaseCarta {
         return Collections.unmodifiableList(energias); 
     }
 }
-

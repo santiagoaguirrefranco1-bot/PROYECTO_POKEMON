@@ -2,7 +2,7 @@ package Logica;
 
 public class Pocion extends Objeto {
     public Pocion() {
-        super("Poción");
+        super("Pocion");
     }
 
     @Override

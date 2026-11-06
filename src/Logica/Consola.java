@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Consola implements Vista {
-    private static final String LINEA = "═".repeat(54);
+    private static final String LINEA = "-".repeat(54);
     private final Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
 
     public void mostrarBienvenida() {
         System.out.println(LINEA);
-        System.out.println("   POKEMON TCG POCKET — Genetic Apex (versión consola)");
+        System.out.println("   POKEMON TCG POCKET - Genetic Apex (version consola)");
         System.out.println(LINEA);
     }
 
@@ -47,7 +47,7 @@ public class Consola implements Vista {
     public void mostrarCampo(Jugador actual, Jugador rival, int turno) {
         System.out.println();
         System.out.println(LINEA);
-        System.out.println("TURNO " + turno + " — " + actual.getNombre());
+        System.out.println("TURNO " + turno + " - " + actual.getNombre());
         System.out.println(LINEA);
 
         System.out.println("RIVAL (" + rival.getNombre() + ")" + barraDe(rival.getActivo()));
@@ -60,7 +60,7 @@ public class Consola implements Vista {
         System.out.println("Puntos de premio propios: " + actual.getPuntosPremio() + "/3");
         System.out.println();
 
-        System.out.println("Zona de energía: " + actual.getZonaEnergia().getSimbolo()
+        System.out.println("Zona de energia: " + actual.getZonaEnergia().getSimbolo()
                 + (actual.isEnergiaDisponible() ? " (disponible)" : " (ya usada)"));
         System.out.println("Tu mano (" + actual.getMano().size() + " cartas):");
         int n = 1;
@@ -68,11 +68,11 @@ public class Consola implements Vista {
             System.out.println("  " + n++ + ". " + c.getNombre());
         }
         System.out.println(LINEA);
-        System.out.println("¿Qué deseas hacer?");
-        System.out.println("1. Adjuntar energía de zona");
+        System.out.println("Que deseas hacer?");
+        System.out.println("1. Adjuntar energia de zona");
         System.out.println("2. Jugar carta de entrenador");
-        System.out.println("3. Colocar Pokémon en banco");
-        System.out.println("4. Retirar Pokémon activo");
+        System.out.println("3. Colocar Pokemon en banco");
+        System.out.println("4. Retirar Pokemon activo");
         System.out.println("5. Atacar");
         System.out.println("6. Pasar turno");
         System.out.println(LINEA);
@@ -87,17 +87,17 @@ public class Consola implements Vista {
     public void anunciarGanador(Jugador ganador, String motivo) {
         System.out.println();
         System.out.println(LINEA);
-        System.out.println("¡" + ganador.getNombre() + " es el nuevo Maestro Pokémon!");
+        System.out.println("¡" + ganador.getNombre() + " es el nuevo Maestro Pokemon!");
         System.out.println("Victoria porque " + motivo + ".");
         System.out.println(LINEA);
     }
 
     private void imprimirCampo(Jugador j) {
         ClasePokemon activo = j.getActivo();
-        System.out.println("[Activo] " + (activo == null ? "—" : activo.getNombre()
-                + "   Energía adjunta: " + energias(activo)));
+        System.out.println("[Activo] " + (activo == null ? "-" : activo.getNombre()
+                + "   Energia adjunta: " + energias(activo)));
         StringBuilder banco = new StringBuilder("[Banco] ");
-        if (j.getBanco().isEmpty()) banco.append("—");
+        if (j.getBanco().isEmpty()) banco.append("-");
         for (ClasePokemon p : j.getBanco()) {
             banco.append(p.getNombre()).append(" (").append(p.getPsActual()).append(" PS)  ");
         }
@@ -108,7 +108,7 @@ public class Consola implements Vista {
         if (p == null) return "";
         int llenos = (int) Math.round(10.0 * p.getPsActual() / p.getPsMax());
         if (p.getPsActual() > 0 && llenos == 0) llenos = 1;
-        return "   PS: " + "█".repeat(llenos) + "░".repeat(10 - llenos)
+        return "   PS: " + "#".repeat(llenos) + "-".repeat(10 - llenos)
                 + " " + p.getPsActual() + "/" + p.getPsMax();
     }
 
@@ -128,7 +128,7 @@ public class Consola implements Vista {
                 if (n >= min && n <= max) return n;
             } catch (NumberFormatException e) {
             }
-            System.out.println("Opción inválida. Ingresa un número entre " + min + " y " + max + ".");
+            System.out.println("Opcion invalida. Ingresa un numero entre " + min + " y " + max + ".");
         }
     }
 }

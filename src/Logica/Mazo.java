@@ -80,7 +80,7 @@ public class Mazo {
         return null;
     }
 
-    //Tipos de Pokemon sin Incoloro con los que se armo el mazo, de ahí sale la energia de la zona
+    //Tipos de Pokemon sin Incoloro con los que se armo el mazo, de ahi sale la energia de la zona
     public List<ClaseTipo> getTiposPokemon() {
         return Collections.unmodifiableList(tiposPokemon);
     }
