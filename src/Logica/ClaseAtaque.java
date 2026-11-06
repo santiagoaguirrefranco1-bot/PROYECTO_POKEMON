@@ -31,7 +31,7 @@ public class ClaseAtaque {
 
     @Override
     public String toString() {
-        return nombre + " (" + costo + tipoCosto + "): " + danioBase + " daño";
+        return nombre + " (" + costo + tipoCosto + "): " + danioBase + " danio";
     }
     
 

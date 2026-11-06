@@ -1,44 +1,30 @@
-import Logica.*;
+import Logica.Consola;
+import Logica.FabricaCartas;
+import Logica.Jugador;
+import Logica.Mazo;
+import Logica.Partida;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 
 public class App {
     public static void main(String[] args) {
-        // - - - - - - - P R U E B A S - - - - - - -
-        //Crear un Pokemon a mano
-        List<ClaseAtaque> ataques = new ArrayList<>();
-        ataques.add(new ClaseAtaque("Mordisco", 1, ClaseTipo.ELECTRICO, 20));
-        ClasePokemon pikachu = new ClasePokemon("Pikachu", ClaseTipo.ELECTRICO, 60, 1, ataques);
+        System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));
 
-        //Daño y curacion
-        pikachu.recibirDanio(30);
-        System.out.println("PS despues de 30 de daño: " + pikachu.getPsActual());   // DEBE DE SER 30
-        pikachu.curar(100);
-        System.out.println("PS despues de curar de mas: " + pikachu.getPsActual());  // DEBE DE SER 60
+        Consola consola = new Consola();
+        consola.mostrarBienvenida();
 
-        //Energia y ataque
-        System.out.println("Puede atacar sin energia: " + pikachu.puedeAtacar(ataques.get(0)));  // false
-        pikachu.adjuntarEnergia(ClaseTipo.ELECTRICO);
-        System.out.println("Puede atacar con energia: " + pikachu.puedeAtacar(ataques.get(0)));  // true
+        String nombre1 = consola.pedirNombre("Entrenador 1");
+        Mazo mazo1 = FabricaCartas.crearMazo(consola.elegirMazo(nombre1, FabricaCartas.nombresMazos()));
+        String nombre2 = consola.pedirNombre("Entrenador 2");
+        Mazo mazo2 = FabricaCartas.crearMazo(consola.elegirMazo(nombre2, FabricaCartas.nombresMazos()));
 
-        //Pokemon ex y basico
-        ClasePokemon mewtwo = new ClasePokemonEx("Mewtwo ex", ClaseTipo.PSIQUICO, 150, 2, ataques);
-        System.out.println("Premio Pikachu: " + pikachu.getPuntosPremio());   // DEBE DE SER 1
-        System.out.println("Premio Mewtwo ex: " + mewtwo.getPuntosPremio());   // DEBE DE SER 2
+        if (!mazo1.esValido() || !mazo2.esValido()) {
+            System.out.println("Alguno de los mazos no es valido.");
+            return;
+        }
 
-        //Debilidades
-        System.out.println("Agua debil a Fuego: " + ClaseTipo.AGUA.esDebilA(ClaseTipo.FUEGO));  // true
-
-        //Probar una carta de entrenador con un jugador
-        List<ClaseCarta> cartas = new ArrayList<>();
-        cartas.add(pikachu);
-        cartas.add(new Pocion());
-        Jugador yugi = new Jugador("yugi", new Mazo(cartas));
-        yugi.agregarAMano(pikachu);
-        yugi.colocarActivo(pikachu);
-        pikachu.recibirDanio(40);
-        new Pocion().activar(yugi);
-        System.out.println("PS tras Pocion: " + pikachu.getPsActual());        // DEBE DE SER 40
+        Partida partida = new Partida(new Jugador(nombre1, mazo1), new Jugador(nombre2, mazo2), consola);
+        partida.jugar();
     }
 }

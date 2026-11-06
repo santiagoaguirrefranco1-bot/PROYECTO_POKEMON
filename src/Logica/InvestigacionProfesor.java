@@ -2,11 +2,11 @@ package Logica;
 
 public class InvestigacionProfesor extends Soporte {
     public InvestigacionProfesor() {
-        super("Investigación del Profesor");
+        super("Investigacion del Profesor");
     }
 
     @Override
-    public boolean activar(Jugador jugador) {
+    public boolean activar(Jugador jugador, Partida partida) {
         jugador.descartarMano();
         jugador.robar();
         jugador.robar();

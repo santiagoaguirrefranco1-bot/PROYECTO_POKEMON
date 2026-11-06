@@ -8,13 +8,13 @@ public class Misty extends Soporte {
         super("Misty");
     }
     @Override
-    public boolean activar(Jugador jugador) {
+    public boolean activar(Jugador jugador, Partida partida) {
         for (ClasePokemon p : jugador.getPokemonEnJuego()) {
             if (p.getTipo() == ClaseTipo.AGUA) {
             for (int i = 0; i < 3; i++) {
                 p.adjuntarEnergia(ClaseTipo.AGUA);
                 }
-                System.out.println("Misty adjunta 3 energías de Agua a " + p.getNombre());
+                System.out.println("Misty adjunta 3 energias de Agua a " + p.getNombre());
                 return true;
             }
     }

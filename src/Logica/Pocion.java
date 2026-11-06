@@ -6,7 +6,7 @@ public class Pocion extends Objeto {
     }
 
     @Override
-    public boolean activar(Jugador jugador) {
+    public boolean activar(Jugador jugador, Partida partida) {
     ClasePokemon activo = jugador.getActivo();
     if (activo == null) return false;
     activo.curar(20);

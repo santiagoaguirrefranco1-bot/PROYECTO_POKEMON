@@ -6,7 +6,7 @@ public class TurboVelocidad extends Objeto {
     }
 
     @Override
-    public boolean activar(Jugador jugador) {
+    public boolean activar(Jugador jugador, Partida partida) {
         if (jugador.getActivo() == null) return false;
         jugador.sumarReduccionRetirada(1);
         System.out.println("El costo de retirada baja en 1 este turno");

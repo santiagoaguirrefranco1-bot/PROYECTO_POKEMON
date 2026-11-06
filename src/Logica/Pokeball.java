@@ -2,14 +2,14 @@ package Logica;
 
 public class Pokeball extends Objeto {
     public Pokeball() {
-        super("Pokeball");
+        super("Poke ball");
     }
 
     @Override
-        public boolean activar(Jugador jugador) {
+        public boolean activar(Jugador jugador, Partida partida) {
         ClasePokemon encontrado = jugador.getMazo().sacarPokemonBasico();
         if (encontrado == null) {
-        System.out.println("No quedan Pokémon básicos en el mazo.");
+        System.out.println("No quedan Pokemon basicos en el mazo.");
         return false;
         }
         jugador.agregarAMano(encontrado);
