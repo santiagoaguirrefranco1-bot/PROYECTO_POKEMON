@@ -6,15 +6,15 @@ public class Pokeball extends Objeto {
     }
 
     @Override
-        public boolean activar(Jugador jugador, Partida partida) {
+    public boolean activar(Jugador jugador, Partida partida) {
         ClasePokemon encontrado = jugador.getMazo().sacarPokemonBasico();
         if (encontrado == null) {
-        System.out.println("No quedan Pokemon basicos en el mazo.");
-        return false;
+            partida.getVista().mostrarMensaje("No quedan Pokemon basicos en el mazo");
+            return false;
         }
         jugador.agregarAMano(encontrado);
         jugador.getMazo().barajar();
-        System.out.println("Encontraste a " + encontrado.getNombre() + " y lo pones en tu mano");
+        partida.getVista().mostrarMensaje("Encontraste a " + encontrado.getNombre() + " y lo pones en tu mano");
         return true;
     }
 }

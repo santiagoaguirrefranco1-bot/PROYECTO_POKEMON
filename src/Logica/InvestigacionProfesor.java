@@ -10,7 +10,7 @@ public class InvestigacionProfesor extends Soporte {
         jugador.descartarMano();
         jugador.robar();
         jugador.robar();
-        System.out.println(jugador.getNombre() + " descarta su mano y roba 2 cartas");
+        partida.getVista().mostrarMensaje(jugador.getNombre() + " descarta tu mano y roba 2 cartas");
         return true;
     }
 }
