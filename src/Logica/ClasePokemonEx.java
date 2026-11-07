@@ -8,7 +8,7 @@ public class ClasePokemonEx extends ClasePokemon {
                 super(nombre, tipo, ps, costoRetirada, ataques);
     }
 
-    //los pokemon ex se sobreescriben para dar 2
+    //los pokemon ex otorga dos puntos de premio
     @Override
     public int getPuntosPremio(){
         return 2;
