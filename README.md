@@ -56,11 +56,11 @@ que el rival no pueda robar carta al inicio de su turno (mazo vacio).
 Cartas implementadas
 
 Pokemon	    Tipo	 PS	Pokemon	    Tipo	     PS,
-Pikachu	  Electrico	 60	Mewtwo ex	Psiquico	150,
-Charmander	Fuego	 60	Zapdos ex	Electrico	130,
-Squirtle	Agua	 60	Moltres ex	Fuego	    130,
-Jigglypuff	Incoloro 70	Articuno ex	Agua	    130,
-Magikarp	Agua	 30	Snorlax	    Incoloro	150,
+Pikachu	  Electrico	 60,	Mewtwo ex	Psiquico	150,
+Charmander	Fuego	 60,	Zapdos ex	Electrico	130,
+Squirtle	Agua	 60,	Moltres ex	Fuego	    130,
+Jigglypuff	Incoloro 70,	Articuno ex	Agua	    130,
+Magikarp	Agua	 30,	Snorlax	    Incoloro	150.
 Entrenador	                Tipo	         Efecto,
 Investigacion del Profesor	Soporte	Descarta tu mano y roba 2 cartas,
 Misty	                    Soporte	Adjunta 3 energias de Agua a uno de tus Pokemon de Agua,
