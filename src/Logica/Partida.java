@@ -130,7 +130,7 @@ public class Partida {
             vista.mostrarMensaje("No tienes Pokemon en la mano.");
             return;
         }
-        int i = vista.elegirOpcion("Qué Pokemon colocas en el banco?", nombres(basicos), true);
+        int i = vista.elegirOpcion("Que Pokemon colocas en el banco?", nombres(basicos), true);
         if (i >= 0) j.colocarEnBanco(basicos.get(i));
     }
 
